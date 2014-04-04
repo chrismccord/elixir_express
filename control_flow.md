@@ -47,15 +47,16 @@ iex(2)> cond do
 `case` provides control flow based on pattern matching. Given an expression, case will match against each clause until the first pattern is matched. At least one pattern must be matched or `CaseClauseError` will be raised. Let's write a mini calculation parser to perform a few basic operations:
 
 ```elixir
-iex(1)> calculate = fn expression ->
-...(1)>   case expression do
-...(1)>     {:+, num1, num2} -> num1 + num2
-...(1)>     {:-, num1, num2} -> num1 - num2
-...(1)>     {:*, num1, 0}    -> 0
-...(1)>     {:*, num1, num2} -> num1 * num2
-...(1)>     {:/, num1, num2} -> num1 / num2
-...(1)>   end
-...(1)> end
+iex>
+calculate = fn expression ->
+  case expression do
+    {:+, num1, num2} -> num1 + num2
+    {:-, num1, num2} -> num1 - num2
+    {:*, num1, 0}    -> 0
+    {:*, num1, num2} -> num1 * num2
+    {:/, num1, num2} -> num1 / num2
+  end
+end
 #Function<6.17052888 in :erl_eval.expr/5>
 
 iex(2)> calculate.({:+, 8, 2})
