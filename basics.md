@@ -1,3 +1,5 @@
+# The Basics
+
 ## Types
 Elixir is dynamically typed and contains a small, but powerful set of types including:
 
@@ -77,7 +79,7 @@ iex(11)> Enum.reverse list
 [3, 2, 1]
 ```
 
-### Tip: iex "h" helper function
+#### *Tip: iex "h" helper function*
 > Use `h` followed by a Module name or Module function name to call up markdown formatted documentation as seen in the ninth iex entry of the previous example.
 
 
@@ -115,6 +117,6 @@ put_new/3         split/2           take/2            update!/3
 update/4          values/1
 ```
 
-### Tip: tab-complete in `iex`
+#### *Tip: tab-complete in `iex`*
 > Gratuitous use helps discover new functions and explore module APIs
 
