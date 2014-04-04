@@ -120,3 +120,128 @@ update/4          values/1
 #### *Tip: tab-complete in `iex`*
 > Gratuitous use helps discover new functions and explore module APIs
 
+
+## Variables & Immutability
+Elixir is an immutable programming language. Any variables defined cannot be changed. While this imposes some design considerations, it is a vital part of Elixir's ability to write concurrent and robust applications. Variable assignment is referred to as *binding*, where a term is bound to a value. Here's a taste of some simple bindings:
+
+Binding Variables:
+```elixir
+iex(1)> sum = 1 + 1
+2
+iex(2)> names = ["alice", "bob", "ted"]
+["alice", "bob", "ted"]
+iex(3)> [first | rest ] = names
+["alice", "bob", "ted"]
+iex(4)> first
+"alice"
+iex(5)> rest
+["bob", "ted"]
+```
+
+While variables are immutable and can only be assigned once, Elixir allows us to rebind a variable to a new value. It is important to realize that this does *not* change the original variable. Any reference to the previous assignment maintains the original binding.
+
+Rebinding Variables:
+```elixir
+iex(1)> sum = 1 + 2
+3
+iex(2)> initial_sum = fn -> IO.puts sum end
+#Function<20.17052888 in :erl_eval.expr/5>
+
+iex(3)> sum = 3 + 4
+7
+iex(4)> initial_sum.()
+3
+:ok
+```
+
+## Anonymous Functions
+Along with variable binding, we just got our first taste of the anonymous function syntax. Anonymous functions can be defined with the `fn arg1, arg2 -> end` syntax and invoked with the explicit "dot notation." As you would expect from a functional language, functions in Elixir are first class citizens and can be passed around and invoked from other functions.
+
+First Class Functions:
+```elixir
+iex(1)> add = fn num1, num2 ->
+...(1)>   num1 + num2
+...(1)> end
+#Function<12.17052888 in :erl_eval.expr/5>
+
+iex(2)> subtract = fn num1, num2 ->
+...(2)>   num1 - num2
+...(2)> end
+#Function<12.17052888 in :erl_eval.expr/5>
+
+iex(3)> perform_calculation = fn num1, num2, func ->
+...(3)>   func.(num1, num2)
+...(3)> end
+#Function<18.17052888 in :erl_eval.expr/5>
+
+iex(4)> add.(1, 2)
+3
+iex(5)> perform_calculation.(5, 5, add)
+10
+iex(6)> perform_calculation.(5, 5, subtract)
+0
+iex(7)> perform_calculation.(5, 5, &(&1 * &2))
+25
+```
+
+The last example shows Elixir's *shorthand function* syntax. The `&(&1 * &2)` is simply syntactic sugar for:
+
+
+```elixir
+iex(7)> perform_calculation.(5, 5, fn a, b -> a * b end)
+25
+```
+
+The shorthand function syntax is useful when performing simple operations on one or two operands:
+
+```elixir
+iex(1)> Enum.map [3, 7, 9], &(&1 * 2)
+[6, 14, 18]
+iex(2)> Enum.filter [1, "red", 2, "green"], &(is_number &1)
+[1, 2]
+```
+
+#### *Warning: Use sparingly*
+> The shorthand syntax is nice and succinct, but it should be used only in cases when its meaning is obvious and your arguments few. Your code should strive for clarity over brevity, always.
+
+## Captured Functions
+
+The shorthand example also showcased the syntax for *capturing* functions. Capturing is used for functions defined within modules, or *named functions* (Covered in the next section), where a function reference is needed instead of invocation. Both name and arity are required for function identification when capturing. 
+
+Capturing named functions:
+```elixir
+iex(2)> add = &Kernel.+/2
+&Kernel.+/2
+iex(3)> add.(1,2)
+3
+iex(2)> Enum.reduce [1, 2, 3], 0, &Kernel.+/2
+6
+```
+
+When performing `1 + 2`, underneath Elixir is calling the named function `+`, defined and imported automatically from the `Kernel` module. Modules are the main building blocks of Elixir programs.
+
+
+## Named Functions
+Named functions are functions defined within Modules. Named functions are similar to anonymous functions but the dot notation is not required for invocation.
+
+```elixir
+iex>
+
+defmodule Weather do
+  def celsius_to_fahrenheit(celsius) do
+    (celsius * 1.8) + 32
+  end
+
+  def high, do: 50
+  def low, do: 32
+end
+
+{:module, Weather, ...
+iex(5)> Weather.high
+50
+iex(6)> Weather.celsius_to_fahrenheit(20)
+68.0
+```
+We'll be covering modules extensively in the next section.
+
+
