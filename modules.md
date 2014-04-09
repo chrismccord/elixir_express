@@ -158,10 +158,33 @@ iex(5)> process_input.({:jump, 2})
 ** (FunctionClauseError) no function clause matching in :erl_eval."-inside-an-interpreted-fun-"/1
 ```
 
-## Alias
+## Alias, Import, Require
+A few keywords exist in Elixir that live at the heart of module composition:
 
-## Import
+* `alias` used to register aliases for modules
+* `import` imports functions and macros from other modules
+* `require` ensures modules are compiled and loaded so that macros can be invoked
 
-## Require
 
+```elixir
+defmodule Converter do
+  alias :math, as: Math
+  import Math, only: [pi: 0]
+
+  def degrees_to_radians(degrees) do
+    degrees * (pi / 180)
+  end
+
+  def sin_to_cos(x) do
+    Math.cos(x - (pi/2))
+  end
+end
+{:module, Converter...
+
+iex(13)> Converter.degrees_to_radians(90)
+1.5707963267948966
+
+iex(14)> Converter.sin_to_cos(120)
+0.5806111842123187
+```
 
