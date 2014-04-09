@@ -38,5 +38,3 @@ iex(3)> quote do: total = 88.00
 ```
 
 As you can see, Elixir code is represented by a hierarchy of three element tuples, containing an atom, metadata, and arguments. Having access to this simple structure in Elixir's own data-types allows for introspection and code generation techniques that are easy to write and a joy to consume.
-
-You have all the basic tools to create your first Elixir program. We'll be launching rockets, so buckle up!
