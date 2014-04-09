@@ -63,7 +63,7 @@ Let's up the sophistication of our Rocket module to allow the caller to specify 
 ```elixir
 defmodule Rocket do
 
-  def start_launch_sequence(seconds // 10) do
+  def start_launch_sequence(seconds \\ 10) do
     IO.puts "Liftoff in #{seconds}..."
     countdown(seconds)
   end
@@ -82,7 +82,7 @@ end
 
 Instead of compiling and invoking the program with `elixir`, we can use `iex` to compile, load, and experiment with our source files via the `c` helper function.
 
-~~~~~~~
+```elixir
 iex(1)> c "rocket2.ex"
 [Rocket]
 iex(2)> Rocket.start_launch_sequence(5)
@@ -94,12 +94,12 @@ Liftoff in 5...
 1
 Liftoff!
 :ok
-~~~~~~~
+```
 
 Line 3 accepts an argument, with a default value of 10 denoted by the `//` syntax. Elixir contains no `for` or `while` mechanism, instead opting for recursion for iteration. We can leave our `iex` session running and recompile and reload our program after each change by re-executing the `c` function.
 
 
-## 3.3 Guard Clauses
+## Guard Clauses
 There is a problem with the countdown implementation. If a caller passes a negative number, the recursive calls will never terminate. It could be tempting to simply wrap the function in an if clause or manually raising an error, but Elixir provides a better solution with *guard clauses*.
 
 ```elixir
