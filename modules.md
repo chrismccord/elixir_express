@@ -96,7 +96,7 @@ Liftoff!
 :ok
 ```
 
-Line 3 accepts an argument, with a default value of 10 denoted by the `//` syntax. Elixir contains no `for` or `while` mechanism, instead opting for recursion for iteration. We can leave our `iex` session running and recompile and reload our program after each change by re-executing the `c` function.
+Line 3 accepts an argument, with a default value of 10 denoted by the `\\` syntax. We can leave our `iex` session running and recompile and reload our program after each change by re-executing the `c` function.
 
 
 ## Guard Clauses
@@ -162,6 +162,6 @@ iex(5)> process_input.({:jump, 2})
 
 ## Import
 
-# Require
+## Require
 
 
