@@ -139,10 +139,10 @@ In addition to named functions, guard clauses can also be used on anonymous func
 
 ```elixir
 process_input = fn
-  {:left, spaces} -> IO.puts "player moved left #{spaces} space(s)"
+  {:left, spaces}  -> IO.puts "player moved left #{spaces} space(s)"
   {:right, spaces} -> IO.puts "player moved right #{spaces} space(s)"
-  {:up, spaces} -> IO.puts "player moved up #{spaces} space(s)"
-  {:down, spaces} -> IO.puts "player moved down #{spaces} space(s)"
+  {:up, spaces}    -> IO.puts "player moved up #{spaces} space(s)"
+  {:down, spaces}  -> IO.puts "player moved down #{spaces} space(s)"
 end
 Function<6.17052888 in :erl_eval.expr/5>
 
@@ -162,6 +162,6 @@ iex(5)> process_input.({:jump, 2})
 
 ## Import
 
-3.6 Require
+# Require
 
 
