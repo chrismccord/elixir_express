@@ -1,0 +1,4 @@
+.DS_Store
+*.beam
+.env
+_build
