@@ -2,7 +2,7 @@
 
 Modules are the main building blocks of Elixir programs. Modules  can contain named functions, import functions from other modules, and use macros for powerful composition techniques.
 
-## 3.2 Liftoff! Your First Program
+## Liftoff! Your First Program
 Open up your favorite editor and create your first Elixir program:
 
 ```elixir
