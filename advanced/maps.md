@@ -1,6 +1,6 @@
 # Maps & Structs
 
-Maps are key/value stores and synomous with hashes or dictionaries in other languages. Maps support powerful pattern matching and upsert operations. Maps are defined with the `%{}` syntax.
+Maps are key/value stores and synomous with hashes or dictionaries in other languages. Maps support powerful pattern matching and upsert operations and are defined with the `%{}` syntax.
 
 ```elixir
 iex(4)> map = %{name: "elixir", age: 3, parent: "erlang"}
