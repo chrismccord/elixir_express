@@ -1,0 +1,5 @@
+[ "erlang-oauth": {:git, "git://github.com/tim/erlang-oauth.git", "3ad509d487a72f9437fef31a379bf3cfeeb166a2", []},
+  "httpotion": {:git, "git://github.com/myfreeweb/httpotion.git", "f41ad7b86cf0de5ce2830323290b30f55df17f17", []},
+  "ibrowse": {:git, "git://github.com/cmullaparthi/ibrowse.git", "d824491d37449763ac44398f8494731e0c1418c1", []},
+  "jsx": {:git, "git://github.com/talentdeficit/jsx.git", "d011411c23e9f8c29d98aa1b7a50ddf9709b6a60", []},
+  "oauth": {:git, "git://github.com/tim/erlang-oauth.git", "3ad509d487a72f9437fef31a379bf3cfeeb166a2", []} ]

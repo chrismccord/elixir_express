@@ -1,6 +1,6 @@
 # Managing state in an immutable language
 
-This application shows how to manage and hold state via "homegrown" processes and how OTP conventions have been 
+This application shows how to manage and hold state via "homegrown" processes and how OTP conventions have been
 built up around these ideas.
 
 While Elixir is immutable, state can be held in processes that continously recurse on themselves. Processes can then accept messages from other processes to return or change their current state.
@@ -11,7 +11,7 @@ Example:
 defmodule Stack.CustomServer do
 
   def start(initial_stack) do
-    spawn_link fn -> 
+    spawn_link fn ->
       :global.register_name :custom_server, self
       listen initial_stack
     end
@@ -25,11 +25,11 @@ defmodule Stack.CustomServer do
   end
 
   def handle_pop(sender, []) do
-    sender <- nil
+    send sender, nil
     listen []
   end
   def handle_pop(sender, stack) do
-    sender <- hd(stack)
+    send sender, hd(stack)
     listen tl(stack)
   end
 end
