@@ -80,3 +80,59 @@ iex(5)>
 ```
 
 The first example above using `spawn_link`, we see the process termination cascade to our own iex session from the `** (EXIT from #PID<0.64.0>)` error. Our iex session stays alive because it is internally restarted by a process Supervisor. Supervisors are covered in the next section on OTP.
+
+
+## Holding State
+Since Elixir is immutable, you may be wondering how state is held. Holding and mutating state can be performed by spawning a process that exposes its state via messages and infinitely recurses on itself with its current state. For example:
+
+```elixir
+defmodule Counter do
+  def start(initial_count) do
+    spawn fn -> listen(initial_count) end
+  end
+
+  def listen(count) do
+    receive do
+      :inc -> listen(count + 1)
+      {sender, :val} ->
+        send sender, count
+        listen(count)
+    end
+  end
+end
+{:module, Counter,...
+
+iex(8)> counter_pid = Counter.start(10)
+#PID<0.140.0>
+
+iex(9)> send counter_pid, :inc
+:inc
+iex(10)> send counter_pid, :inc
+:inc
+iex(11)> send counter_pid, :inc
+:inc
+iex(12)> send counter_pid, {self, :val}
+{#PID<0.40.0>, :val}
+
+iex(13)> receive do
+...(13)>   value -> value
+...(13)> end
+13
+```
+
+## Registered Processes
+Pids can be registered under a name for easy lookup by other processes
+
+```elixir
+iex(26)> pid = Counter.start 10
+iex(27)> Process.register pid, :count
+true
+iex(28)> Process.whereis(:count) == pid
+true
+iex(29)> send :count, :inc
+:inc
+iex(30)> receive do
+...(30)>   value -> value
+...(30)> end
+11
+```
