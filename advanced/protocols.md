@@ -5,7 +5,7 @@ to implement protocols on third party modules and records.
 
 ```elixir
 defimpl String.Chars, for: Status do
-  def to_string(status = %Status{mentions: []}s) do
+  def to_string(status = %Status{mentions: []}) do
     "#{status.username}: #{status.text}"
   end
   def to_string(status) do
