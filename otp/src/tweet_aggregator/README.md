@@ -41,6 +41,8 @@ iex(gatekeeper@127.0.0.1)1> TweetAggregator.GateKeeper.become_leader
 $ iex --name aggregator@127.0.0.1 --cookie foo -S mix
 iex(aggregator@127.0.0.1)1> TweetAggregator.Aggregator.become_leader
 :yes
+iex(aggregator@127.0.0.1)1> Node.connect :"gatekeeper@127.0.0.1"
+true
 ```
 
 ### 3. Start client search node(s)
