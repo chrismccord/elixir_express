@@ -1,7 +1,7 @@
 # Protocols
 
 Protocols provide ad-hoc polymorphism. This pattern allows library consumers
-to implement protocols against third party modules and records.
+to implement protocols against third party modules.
 
 ```elixir
 defimpl String.Chars, for: Status do
