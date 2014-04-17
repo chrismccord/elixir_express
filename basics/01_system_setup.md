@@ -2,14 +2,14 @@
 
 There is no substitute for learning by tinkering. Getting Elixir set up on most platforms is a snap, and we should be quickly on our way.
 
-The only prerequisite for Elixir is Erlang, version R16B or later. Official [precompiled packages](https://www.erlang-solutions.com/downloads/download-erlang-otp)
+The only prerequisite for Elixir is Erlang, version R17 or later. Official [precompiled packages](https://www.erlang-solutions.com/downloads/download-erlang-otp)
 are available for most platforms.
 
 To check your installed erlang version:
 
-```bas
+```bash
 $ erl
-Erlang R16B (erts-5.10.1) ...
+Erlang/OTP 17 [erts-6.0] ...
 ```
 
 ## Mac OSX
