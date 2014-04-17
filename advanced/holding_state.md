@@ -38,7 +38,7 @@ end
 "Starting" the Custom stack server involves spawning a process that continually recurses on `listen` with the stack's current state. To push a value onto the stack, the process listens for a message containing the sender's pid, and a value `{sender, :push, value}` and then recurses back on itself with the value placed in the head of the stack. Similarly, to pop a value off the stack, the process listens for `{sender, :pop}` and sends the top of the stack as a message gack to the sender, then recurses back on itself with the popped value removed.
 
 ## Erlang/OTP Conventions
-The OTP library brings tried and true conventions to holding state, process supervisionm, and message passing. For almost all cases where state needs to be held, it should be placed in an OTP gen_server.
+The OTP library brings tried and true conventions to holding state, process supervision, and message passing. For almost all cases where state needs to be held, it should be placed in an OTP gen_server.
 
 ## Homegrown Server Example
 ```elixir
