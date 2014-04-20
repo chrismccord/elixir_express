@@ -18,7 +18,7 @@ Install via [homebrew](http://brew.sh/)
 
 ```bash
 $ brew update
-$ brew install erlang
+$ brew install erlang --devel
 $ brew install elixir
 ```
 
