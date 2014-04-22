@@ -38,3 +38,25 @@ iex(3)> quote do: total = 88.00
 ```
 
 As you can see, Elixir code is represented by a hierarchy of three element tuples, containing an atom, metadata, and arguments. Having access to this simple structure in Elixir's own data-types allows for introspection and code generation techniques that are easy to write and a joy to consume.
+
+
+## Examples
+[Phoenix Web Framework](https://github.com/phoenixframework/phoenix) - Router
+```elixir
+defmodule MyApp.Router do
+  use Phoenix.Router
+
+  plug Plug.Static, at: "/static", from: :your_app
+
+  get "/pages/:page", Controllers.Pages, :show, as: :page
+  get "/files/*path", Controllers.Files, :show
+
+  resources "users", Controllers.Users do
+    resources "comments", Controllers.Comments
+  end
+
+  scope path: "admin", alias: Controllers.Admin, helper: "admin" do
+    resources "users", Users
+  end
+end
+```
