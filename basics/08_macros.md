@@ -60,3 +60,21 @@ defmodule MyApp.Router do
   end
 end
 ```
+
+ExUnit Test Framework
+```elixir
+defmodule Phoenix.Router.RoutingTest do
+  use ExUnit.Case
+
+  test "limit resource by passing :except option" do
+    conn = simulate_request(Router, :delete, "posts/2")
+    assert conn.status == 404
+    conn = simulate_request(Router, :get, "posts/new")
+    assert conn.status == 200
+  end
+
+  test "named route builds _path url helper" do
+    assert Router.user_path(id: 88) == "/users/88"
+  end
+end
+```
