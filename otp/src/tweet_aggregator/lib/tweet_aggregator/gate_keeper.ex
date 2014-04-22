@@ -45,7 +45,7 @@ defmodule TweetAggregator.GateKeeper do
     receive do
       {sender, env_var} when env_var in @env_vars ->
         send sender, System.get_env("TWEET_#{String.upcase(to_string(env_var))}")
-      {sender, _} -> {send(sender, nil)}
+      {sender, _} -> send(sender, nil)
     end
     listen
   end
