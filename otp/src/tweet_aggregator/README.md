@@ -9,6 +9,12 @@ Distributed Tweet Aggregator
 - Aggregator
 - Search.Client
 
+*Note:* Erlang/Elixir communicates over port 4369 by default. On locked down networks like public wifi run 
+```
+epmd -port 80 -daemon
+```
+
+to tell Erlang/Elixir to communicate over port 80.
 
 ## Example Usage
 
