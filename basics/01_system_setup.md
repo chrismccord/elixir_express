@@ -19,7 +19,7 @@ Install via [homebrew](http://brew.sh/)
 ```bash
 $ brew update
 $ brew install erlang --devel
-$ brew install https://raw.githubusercontent.com/josevalim/homebrew/1cb4fa94c90c3fc931bd07e778ee3ff967b4a48d/Library/Formula/elixir.rb
+$ brew install elixir
 ```
 
 
