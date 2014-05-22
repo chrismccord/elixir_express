@@ -4,9 +4,9 @@ Macros give programmers the power to write code that writes code. This power eli
 
 ```elixir
 defmodule Condition do
-  defmacro lest(expression, options) do
+  defmacro lest(expression, do: block) do
     quote do
-      if !unquote(expression), unquote(options)
+      if !unquote(expression), do: unquote(block)
     end
   end
 end
