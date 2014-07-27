@@ -1,5 +1,5 @@
 defmodule TweetAggregator.Search.Server do
-  use GenServer.Behaviour
+  use GenServer
   alias TweetAggregator.Search.Client
   alias TweetAggregator.Search.Client.Query
 
@@ -27,7 +27,7 @@ defmodule TweetAggregator.Search.Server do
   end
 
   def record_seen_ids(statuses, query) do
-    query.seen_ids(query.seen_ids ++ seen_ids(statuses))
+    %{query | seen_ids: (query.seen_ids ++ seen_ids(statuses))}
   end
 
   def new_results?(statuses, query) do

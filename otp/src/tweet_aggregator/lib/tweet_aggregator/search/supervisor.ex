@@ -1,5 +1,5 @@
 defmodule TweetAggregator.Search.Supervisor do
-  use Supervisor.Behaviour
+  use Supervisor
 
   def stop(server_name) do
     Process.exit Process.whereis(name(server_name)), :shutdown

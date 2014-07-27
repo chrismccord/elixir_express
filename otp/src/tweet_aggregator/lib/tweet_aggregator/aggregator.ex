@@ -1,5 +1,5 @@
 defmodule TweetAggregator.Aggregator do
-  use GenServer.Behaviour
+  use GenServer
   alias TweetAggregator.Search.Client.Status
 
   def become_leader do
@@ -29,7 +29,7 @@ defmodule TweetAggregator.Aggregator do
     :gen_server.cast {:global, :aggregator}, {:push, server_name, status}
   end
 
-  defp log(server_name, Status[text: text, username: username]) do
+  defp log(server_name, %Status{text: text, username: username}) do
     IO.puts """
     >> #{server_name}
     @#{username}: #{text}
