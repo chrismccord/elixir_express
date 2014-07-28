@@ -62,6 +62,7 @@ Error in process <0.64.0> with exit value: {{'Elixir.RuntimeError','__exception_
 ** (EXIT from #PID<0.64.0>) {RuntimeError[message: "boom!"], [{:erlang, :apply, 2, []}]}
 ```
 
+```elixir
 pid = spawn fn ->
   receive do
     :boom -> raise "boom!"
