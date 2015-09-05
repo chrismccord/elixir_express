@@ -182,8 +182,8 @@ it accessible as `Math` (following the Elixir naming convention for
 Modules).
 
 Furthermore, we could have imported the entire Math module with `import
-Math`; however, since we only wish to call only the `pi` function, we've
-limited the import to only that specific function.
+Math`; however, since we only wish to call the `pi` function, we've limited the
+import to only that specific function.
 
 ```elixir
 defmodule Converter do
