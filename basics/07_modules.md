@@ -49,8 +49,7 @@ Liftoff!
 > Elixir files are named `.exs`, which stands for Elixir script, and `.ex`
 > are typically compiled to Erlang BEAM byte-code. For simple one off programs, sys-admin scripts etc. use `.exs`.
 
-You can also fire up iex in the same directory and use the `c` helper
-function
+You can also fire up iex in the same directory and use the `c` helper function
 
 ```elixir
 iex(1)> c "rocket1.exs"
