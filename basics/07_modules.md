@@ -30,7 +30,7 @@ Rocket.start_launch_sequence
 We can compile and run our program in a single step using the `elixir` command:
 
 ```bash
-$ elixir rocket1.ex
+$ elixir rocket1.exs
 Liftoff in 10...
 10
 9
@@ -45,7 +45,19 @@ Liftoff in 10...
 Liftoff!
 ```
 
-Publicly reachable functions are defined with the `def` keyword, while private functions use `defp`. It is common with Elixir code to group public functions with their private counterparts instead of lumping all public and private functions as separate groups in the source file. Attempting to call a `defp` function will result in an error: 
+### *Tip: Elixir files
+> Elixir files are named `.exs`, which stands for Elixir script, and `.ex`
+> are typically compiled to Erlang BEAM byte-code. For simple one off programs, sys-admin scripts etc. use `.exs`.
+
+You can also fire up iex in the same directory and use the `c` helper function
+
+```elixir
+iex(1)> c "rocket1.exs"
+Liftoff in 10...
+...
+```
+
+Publicly reachable functions are defined with the `def` keyword, while private functions use `defp`. It is common with Elixir code to group public functions with their private counterparts instead of lumping all public and private functions as separate groups in the source file. Attempting to call a `defp` function will result in an error:
 
 ```elixir
 iex(13)> Rocket.countdown(1)
@@ -57,7 +69,7 @@ iex(13)> Rocket.countdown(1)
 
 The `countdown` function gives the first glimpse of function pattern matching. Pattern matching allows multiple function clauses to be defined with the same name. The BEAM Virtual Machine will match against each definition by the order defined until the arguments match the defined pattern. `countdown(0)` serves as the termination of the recursive calls and has higher precedence over `countdown(seconds)` because it is defined first. Had `countdown(0)` been defined second, the program would never terminate because the first clause would always match. Pattern matching often removes the need for complex if-else branches and helps keep module functions short and clear.
 
- 
+
 Let's up the sophistication of our Rocket module to allow the caller to specify a countdown when starting the launch:
 
 ```elixir
