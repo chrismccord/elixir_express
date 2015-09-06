@@ -177,6 +177,13 @@ A few keywords exist in Elixir that live at the heart of module composition:
 * `import` imports functions and macros from other modules
 * `require` ensures modules are compiled and loaded so that macros can be invoked
 
+In the example below `:math` refers to the Erlang math module and makes
+it accessible as `Math` (following the Elixir naming convention for
+Modules).
+
+Furthermore, we could have imported the entire Math module with `import
+Math`; however, since we only wish to call the `pi` function, we've limited the
+import to only that specific function.
 
 ```elixir
 defmodule Converter do
@@ -200,3 +207,13 @@ iex(14)> Converter.sin_to_cos(120)
 0.5806111842123187
 ```
 
+Rather than calling `cos` via the Math module, we could have imported it
+as well
+
+```elixir
+  import Math, only: [pi: 0, cos: 1]
+
+  def sin_to_cos(x) do
+    cos(x - (pi/2))
+  end
+```
