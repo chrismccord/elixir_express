@@ -3,7 +3,7 @@
 This application shows how to manage and hold state via "homegrown" processes and how OTP conventions have been
 built up around these ideas.
 
-While Elixir is immutable, state can be held in processes that continously recurse on themselves. Processes can then accept messages from other processes to return or change their current state.
+While Elixir is immutable, state can be held in processes that continuously recurse on themselves. Processes can then accept messages from other processes to return or change their current state.
 
 Example:
 
@@ -35,7 +35,7 @@ defmodule Stack.CustomServer do
 end
 ```
 
-"Starting" the Custom stack server involves spawning a process that continually recurses on `listen` with the stack's current state. To push a value onto the stack, the process listens for a message containing the sender's pid, and a value `{sender, :push, value}` and then recurses back on itself with the value placed in the head of the stack. Similarly, to pop a value off the stack, the process listens for `{sender, :pop}` and sends the top of the stack as a message gack to the sender, then recurses back on itself with the popped value removed.
+"Starting" the Custom stack server involves spawning a process that continually recurses on `listen` with the stack's current state. To push a value onto the stack, the process listens for a message containing the sender's pid, and a value `{sender, :push, value}` and then recurses back on itself with the value placed in the head of the stack. Similarly, to pop a value off the stack, the process listens for `{sender, :pop}` and sends the top of the stack as a message back to the sender, then recurses back on itself with the popped value removed.
 
 ## Erlang/OTP Conventions
 The OTP library brings tried and true conventions to holding state, process supervision, and message passing. For almost all cases where state needs to be held, it should be placed in an OTP gen_server.
