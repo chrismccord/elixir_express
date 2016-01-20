@@ -4,7 +4,7 @@
 Only `false` and `nil` are falsey. All other values are considered truthy.
 
 ### if / unless
-Elixir sports the traditional `if` and `unless` keywords for control flow branching, but as well see, their use will be limited in favor of superior approaches.
+Elixir sports the traditional `if` and `unless` keywords for control flow branching, but as we'll see, their use will be limited in favor of superior approaches.
 
 ```elixir
 iex(1)> saved = true
