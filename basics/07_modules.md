@@ -117,7 +117,7 @@ There is a problem with the countdown implementation. If a caller passes a negat
 ```elixir
 defmodule Rocket do
 
-  def start_launch_sequence(seconds // 10) when seconds >= 0 do
+  def start_launch_sequence(seconds \\ 10) when seconds >= 0 do
     IO.puts "Liftoff in #{seconds}..."
     countdown(seconds)
   end
